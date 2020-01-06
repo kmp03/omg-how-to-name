@@ -1,5 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
+#include <cstddef>
 #include <fstream>
 #include <istream>
 #include <limits>
@@ -25,6 +26,7 @@ struct vint {
 
     size_t size() const;
     size_t capacity() const;
+    static size_t max_size();
 
     void swap(vint &);
 
@@ -34,8 +36,12 @@ private:
     };
     size_t m_size;
     size_t m_capacity;
-    valuetype *m_data = nullptr;
+    static size_t m_max_size;
+    std::byte *m_storage = nullptr;
+    valuetype **m_data;
 };
+
+inline size_t vint::m_max_size = std::numeric_limits<size_t>::max();
 
 void swap(vint &, vint &);
 std::ostream &operator<<(std::ostream &, vint const &);
