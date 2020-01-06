@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "header.h"
+#include "vint.h"
 
 void info(vint const& arr) {
     using namespace std;
@@ -13,12 +13,13 @@ void info(vint const& arr) {
 int main() {
     using namespace std;
 
+
     vint vec;
-    for (size_t i = 0; i < 25; i++) {
+    for (size_t i = 0; i < 27; i++) {
         vec.push_back(i + 1);
-        info(vec);
-        cout << "##############\n";
     }
+    auto vec2 = vec;
+    cout << vec2;
 
     return 0;
 }
